@@ -1,53 +1,71 @@
 <template>
-  <section id="coaches" class="py-24 bg-bone relative" dir="rtl" ref="sectionRef">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      
-      <!-- Header -->
-      <div 
-        :class="['text-center mb-20 transition-all duration-1000 ease-out',
-                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12']"
-      >
-        <span class="text-accent font-black tracking-[0.3em] text-[10px] md:text-xs uppercase font-en">Leadership</span>
-        <br>
-        <h2 class="text-3xl md:text-5xl font-black text-obsidian mt-2 accent-slash inline-block tracking-tighter">تیم رهبری و مربیان</h2>
-      </div>
+  <section class="py-24 bg-[#F5F5F2] border-b border-gray-200 relative overflow-hidden" dir="rtl" ref="sectionRef">
+    
+    <!-- Decorative background element -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#C5162E]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-      <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
+      
+      <div class="flex flex-col xl:flex-row gap-16 items-center xl:items-stretch">
         
-        <!-- Coach Card -->
-        <div 
-          v-for="(coach, index) in coaches" 
-          :key="coach.name" 
-          class="group cursor-pointer flex flex-col"
-          :style="{ transitionDelay: `${index * 150}ms` }"
-          :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12', 'transition-all duration-700 ease-out'"
-        >
-          <div class="relative overflow-hidden mb-6 btn-sharp bg-obsidian shadow-lg">
-            <img 
-              :src="coach.image" 
-              :alt="coach.name" 
-              class="w-full h-[400px] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
-              loading="lazy"
-            >
-            <!-- Overlay Gradient for moody feel -->
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"></div>
-            
-            <!-- Floating Social Icons on Hover -->
-            <div class="absolute bottom-6 right-6 flex gap-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-              <div class="w-10 h-10 bg-accent text-white flex items-center justify-center btn-sharp shadow-lg hover:bg-white hover:text-accent transition-colors duration-300">
-                <!-- Instagram Icon -->
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.88z"/></svg>
+        <!-- Right Side: Title Block -->
+        <div class="w-full xl:w-[25%] flex flex-col justify-center xl:pr-4 transition-all duration-1000 ease-out"
+             :class="isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'">
+          <h2 class="text-4xl lg:text-5xl font-black text-[#0B0D10] leading-tight mb-6 tracking-tighter accent-slash inline-block">
+            مربیان
+          </h2>
+          <p class="text-gray-500 font-bold text-sm leading-relaxed mb-10 border-r-2 border-gray-300 pr-4">
+            تیم مربیان سایراکس با تجربه میدانی و مدارک معتبر بین‌المللی آماده هدایت شما هستند.
+          </p>
+          <div>
+            <NuxtLink to="/coaches" class="inline-block bg-transparent border-2 border-gray-300 text-[#0B0D10] px-8 py-3 font-bold text-sm text-center hover:border-[#C5162E] hover:text-[#C5162E] transition-all">
+              مشاهده همه مربیان
+            </NuxtLink>
+          </div>
+        </div>
+
+        <!-- Left Side: 3 Cards -->
+        <div class="w-full xl:w-[75%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          <div 
+            v-for="(coach, index) in coaches" 
+            :key="coach.name"
+            class="group flex flex-col items-center text-center transition-all duration-700 ease-out cursor-pointer"
+            :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'"
+            :style="{ transitionDelay: `${index * 150}ms` }"
+          >
+            <!-- Image Container with offset frame effect -->
+            <div class="relative w-full aspect-[4/5] mb-6">
+              
+              <!-- Offset Red Frame (Appears and shifts on hover) -->
+              <div class="absolute inset-0 bg-[#C5162E] clip-coach-img opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-0 translate-y-0 group-hover:translate-x-3 group-hover:translate-y-3 -z-10"></div>
+              
+              <!-- Main Image Box -->
+              <div class="absolute inset-0 overflow-hidden bg-gray-200 clip-coach-img z-10 transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-2">
+                <img :src="coach.image" :alt="coach.name" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
+                <!-- Inner overlay gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D10]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             </div>
+            
+            <!-- Red Accent Line (Static underneath) -->
+            <div class="w-full h-[3px] bg-[#C5162E] transform -skew-y-3 origin-left -mt-2 mb-6 group-hover:bg-[#0B0D10] transition-colors duration-500"></div>
+            
+            <!-- Details -->
+            <div class="flex items-center gap-2 mb-2 justify-center w-full">
+              <h3 class="text-[#0B0D10] font-black text-xl group-hover:text-[#C5162E] transition-colors duration-300">{{ coach.name }}</h3>
+              <!-- Arrow up-right Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 group-hover:text-[#C5162E] group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H9M17 7V15" />
+              </svg>
+            </div>
+            
+            <p class="text-gray-900 font-bold text-sm mb-1 transition-colors duration-300">{{ coach.role }}</p>
+            <p class="text-gray-500 text-xs font-bold">{{ coach.exp }}</p>
           </div>
-          
-          <h3 class="text-2xl font-black text-obsidian mb-1 tracking-tight">{{ coach.name }}</h3>
-          <p class="text-accent font-bold mb-4 text-sm">{{ coach.role }}</p>
-          <p class="text-coolgray text-sm leading-relaxed font-bold">{{ coach.bio }}</p>
         </div>
 
       </div>
+
     </div>
   </section>
 </template>
@@ -60,37 +78,35 @@ const sectionRef = ref<HTMLElement | null>(null)
 let observer: IntersectionObserver | null = null
 
 const coaches = [
-  {
-    name: 'سنسی سعید احمدی',
-    role: 'بنیان‌گذار و سرمربی',
-    bio: 'دارای دان ۵ نینجوتسو، مربی رسمی فدراسیون با بیش از ۱۵ سال سابقه آموزش حرفه‌ای و قهرمان اسبق مسابقات کشوری.',
-    image: '/images/coach-1.jpg'
+  { 
+    name: 'علی محمدی', 
+    role: 'مربی نینجوتسو', 
+    exp: '۷ سال سابقه تدریس',
+    image: '/images/coach-1.jpg' 
   },
-  {
-    name: 'سنسی محمد کریمی',
-    role: 'مربی ارشد کامبت و سلاح',
-    bio: 'متخصص درگیری‌های نزدیک و سلاح‌های سرد، مسئول آموزش تیم‌های عملیاتی و بادیگاردی.',
-    image: '/images/coach-2.jpg'
+  { 
+    name: 'امیر رضایی', 
+    role: 'مربی جوجیتسو برزیلی', 
+    exp: '۵ سال سابقه مسابقه',
+    image: '/images/coach-2.jpg' 
   },
-  {
-    name: 'سنسی رضا طاهری',
-    role: 'مربی آکروبات و فیتنس',
-    bio: 'متخصص آماده‌سازی جسمانی، تمرینات فانکشنال و حرکات نمایشی پیشرفته ویژه مسابقات.',
-    image: '/images/coach-3.jpg'
+  { 
+    name: 'سینا احمدی', 
+    role: 'مربی آمادگی جسمانی', 
+    exp: '۹ سال سابقه تمرین',
+    image: '/images/coach-3.jpg' 
   }
 ]
 
 onMounted(() => {
+  // Continuous entrance observer
   observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      isVisible.value = true
-      if (sectionRef.value && observer) {
-        observer.unobserve(sectionRef.value)
-      }
-    }
+    entries.forEach(entry => {
+      isVisible.value = entry.isIntersecting
+    })
   }, {
     threshold: 0.1,
-    rootMargin: '0px 0px -10% 0px'
+    rootMargin: '0px 0px -50px 0px'
   })
 
   if (sectionRef.value) {
@@ -110,22 +126,22 @@ onUnmounted(() => {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
-.btn-sharp {
-  border-radius: 0;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
-}
-
 .accent-slash {
   position: relative;
 }
 .accent-slash::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -15px;
   right: 0;
   width: 40px;
-  height: 5px;
+  height: 3px;
   background-color: #C5162E;
   transform: skewX(-20deg);
+}
+
+/* Diagonal cut at the bottom */
+.clip-coach-img {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
 }
 </style>

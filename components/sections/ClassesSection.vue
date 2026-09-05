@@ -1,91 +1,89 @@
 <template>
-  <section id="training" class="py-24 bg-obsidian relative overflow-hidden" dir="rtl" ref="sectionRef">
-    <!-- Background pattern -->
-    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#F5F5F2 1.5px, transparent 1.5px); background-size: 32px 32px;"></div>
-    
-    <!-- Decorative glow in the background -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+  <section class="py-24 bg-[#0B0D10] relative overflow-hidden" dir="rtl" ref="sectionRef">
+    <!-- Subtle background pattern/glow -->
+    <div class="absolute top-0 right-0 w-full h-full opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#C5162E] via-transparent to-transparent pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
       
-      <!-- Section Header -->
-      <div 
-        :class="['text-center mb-16 transition-all duration-1000 ease-out',
-                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12']"
-      >
-        <span class="text-accent font-black tracking-[0.3em] text-xs uppercase font-en">Training Programs</span>
-        <h2 class="text-3xl md:text-5xl font-black text-bone mt-3 tracking-tighter">دوره‌های تمرینی سایراکس</h2>
-        <div class="w-16 h-1 bg-accent mx-auto mt-6 rounded-full opacity-80"></div>
-      </div>
-
-      <!-- Classes Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="flex flex-col xl:flex-row gap-12 items-center xl:items-stretch">
         
-        <!-- Class Card -->
-        <div 
-          v-for="(course, index) in courses" 
-          :key="course.id" 
-          class="group relative bg-[#121418] border border-coolgray/10 p-8 transition-all duration-500 hover:border-accent/50 hover:bg-[#16191f] shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(197,22,46,0.15)] flex flex-col btn-sharp"
-          :style="{ transitionDelay: `${index * 150}ms` }"
-          :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
-        >
-          <!-- Red Top border hover effect -->
-          <div class="absolute top-0 right-0 w-0 h-1 bg-accent transition-all duration-500 ease-out group-hover:w-full"></div>
-          
-          <div class="flex justify-between items-start mb-6">
-            <h3 class="text-2xl font-black text-bone tracking-tight">{{ course.title }}</h3>
-            <span class="bg-accent/10 text-accent px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-sm border border-accent/20">
-              {{ course.level }}
-            </span>
-          </div>
-          
-          <p class="text-coolgray text-sm mb-8 min-h-[60px] leading-relaxed font-bold">
-            {{ course.description }}
+        <!-- Right Side: Title Block -->
+        <div class="w-full xl:w-[20%] flex flex-col justify-center xl:pr-4 transition-all duration-1000 ease-out"
+             :class="isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'">
+          <h2 class="text-4xl lg:text-5xl font-black text-white leading-tight mb-6 tracking-tighter accent-slash inline-block">
+            تمرینات
+          </h2>
+          <p class="text-gray-400 font-bold text-sm leading-relaxed mb-10">
+            برنامه‌های تخصصی برای سطوح و اهداف مختلف.
           </p>
-          
-          <ul class="space-y-4 mb-10 mt-auto">
-            <li class="flex items-center text-sm text-bone/80 font-bold">
-              <div class="w-8 h-8 rounded-sm bg-obsidian flex items-center justify-center ml-3 border border-coolgray/10 group-hover:border-accent/30 transition-colors">
-                <!-- Users Icon -->
-                <svg class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <span>محدوده سنی: {{ course.age }}</span>
-            </li>
-            <li class="flex items-center text-sm text-bone/80 font-bold">
-              <div class="w-8 h-8 rounded-sm bg-obsidian flex items-center justify-center ml-3 border border-coolgray/10 group-hover:border-accent/30 transition-colors">
-                <!-- Clock Icon -->
-                <svg class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <span dir="rtl">{{ course.time }}</span>
-            </li>
-            <li class="flex items-center text-sm text-bone/80 font-bold">
-              <div class="w-8 h-8 rounded-sm bg-obsidian flex items-center justify-center ml-3 border border-coolgray/10 group-hover:border-accent/30 transition-colors">
-                <!-- Map Pin Icon -->
-                <svg class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <span>{{ course.location }}</span>
-            </li>
-          </ul>
-          
-          <NuxtLink 
-            to="/register" 
-            class="w-full bg-bone text-obsidian font-black text-sm py-4 flex items-center justify-center gap-2 hover:bg-accent hover:text-white transition-all duration-300 btn-sharp group/btn"
+          <div>
+            <NuxtLink to="/classes" class="inline-block bg-transparent border-2 border-gray-600 text-white px-8 py-3 font-bold text-sm text-center hover:border-[#C5162E] hover:bg-[#C5162E] hover:text-white transition-all">
+              مشاهده همه تمرینات
+            </NuxtLink>
+          </div>
+        </div>
+
+        <!-- Left Side: 4 Cards -->
+        <div class="w-full xl:w-[80%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+          <div 
+            v-for="(cls, index) in classes" 
+            :key="cls.title"
+            class="group relative flex flex-col bg-[#121418] transition-all duration-700 ease-out cursor-pointer hover:-translate-y-2 clip-aggressive-card"
+            :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'"
+            :style="{ transitionDelay: `${index * 150}ms` }"
           >
-            <span>درخواست ثبت‌نام</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transform transition-transform duration-300 group-hover/btn:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-          </NuxtLink>
+            <!-- Hover Glow Effect Background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-[#C5162E]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+            <!-- Red Top Accent Line -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-gray-800 group-hover:bg-[#C5162E] transition-colors duration-500 z-10"></div>
+
+            <!-- Image Area -->
+            <div class="relative h-[220px] w-full overflow-hidden">
+              <img :src="cls.image" :alt="cls.title" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+              <!-- Dark gradient overlay from bottom -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121418] via-[#121418]/60 to-transparent"></div>
+              
+              <!-- Floating Badge -->
+              <div class="absolute top-4 right-4 bg-[#C5162E] text-white px-3 py-1 text-[10px] font-black tracking-widest uppercase font-en transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
+                PRO
+              </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="px-6 pb-8 pt-2 flex flex-col flex-1 relative z-10">
+              <!-- Move title up into the image area overlapping -->
+              <h3 class="text-white font-black text-xl mb-2 mt-[-40px] drop-shadow-md group-hover:text-[#C5162E] transition-colors duration-300">
+                {{ cls.title }}
+              </h3>
+              
+              <p class="text-gray-400 text-xs font-bold mb-6 group-hover:text-gray-300 transition-colors">
+                {{ cls.level }}
+              </p>
+              
+              <div class="mt-auto flex items-center justify-between w-full text-gray-500 text-[11px] font-bold border-t border-gray-800 pt-4">
+                <!-- Days -->
+                <div class="flex items-center gap-1.5 group-hover:text-gray-300 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>{{ cls.days }}</span>
+                </div>
+                <!-- Age -->
+                <div class="flex items-center gap-1.5 group-hover:text-gray-300 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>{{ cls.age }}</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </div>
 
       </div>
+
     </div>
   </section>
 </template>
@@ -97,47 +95,46 @@ const isVisible = ref(false)
 const sectionRef = ref<HTMLElement | null>(null)
 let observer: IntersectionObserver | null = null
 
-const courses = [
+const classes = [
   { 
-    id: 1, 
-    title: 'نینجا فاندامنتال', 
-    level: 'مبتدی', 
-    description: 'آموزش پایه‌ای حرکات، افت‌ها، ضربات اولیه و ساخت آمادگی جسمانی پایه برای ورود به دنیای رزمی.', 
-    age: '۷ تا ۱۵ سال', 
-    time: 'روزهای زوج - ۱۷:۰۰ الی ۱۸:۳۰', 
-    location: 'سالن اصلی قهرمانان' 
+    title: 'نینجوتسو', 
+    level: 'سطح: مبتدی تا پیشرفته', 
+    days: '۳ روز در هفته',
+    age: '+۱۰ سال',
+    image: '/images/class-1.jpg' 
   },
   { 
-    id: 2, 
-    title: 'کلاسیک کامبت', 
-    level: 'متوسط', 
-    description: 'تمرکز بر تکنیک‌های درگیری، دفاع شخصی پیشرفته شهری و کار با سلاح‌های پایه نینجوتسو.', 
-    age: '۱۵ سال به بالا', 
-    time: 'روزهای فرد - ۱۸:۳۰ الی ۲۰:۰۰', 
-    location: 'سالن شماره ۲ (تکنیک)' 
+    title: 'پارکور و فری‌ران', 
+    level: 'سطح: مبتدی تا پیشرفته', 
+    days: '۲ روز در هفته',
+    age: '+۱۰ سال',
+    image: '/images/class-2.jpg' 
   },
   { 
-    id: 3, 
-    title: 'سایراکس الیت', 
-    level: 'پیشرفته / قهرمانی', 
-    description: 'ویژه اعضای تیم مسابقات. تمرینات پرفشار فیزیکی، استراتژی مبارزه حرفه‌ای و آکروبات.', 
-    age: 'انتخابی (تست فیزیکی)', 
-    time: 'همه روزه - ۲۰:۰۰ الی ۲۲:۰۰', 
-    location: 'کمپ اختصاصی تیم' 
+    title: 'جوجیتسو برزیلی', 
+    level: 'سطح: مبتدی تا پیشرفته', 
+    days: '۳ روز در هفته',
+    age: '+۲۰ سال',
+    image: '/images/class-3.jpg' 
+  },
+  { 
+    title: 'آمادگی جسمانی', 
+    level: 'سطح: همه سطوح', 
+    days: '۳ روز در هفته',
+    age: '+۱۵ سال',
+    image: '/images/class-4.jpg' 
   }
 ]
 
 onMounted(() => {
+  // Repeating entrance animation setup
   observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      isVisible.value = true
-      if (sectionRef.value && observer) {
-        observer.unobserve(sectionRef.value)
-      }
-    }
+    entries.forEach(entry => {
+      isVisible.value = entry.isIntersecting
+    })
   }, {
     threshold: 0.1,
-    rootMargin: '0px 0px -10% 0px'
+    rootMargin: '0px 0px -50px 0px'
   })
 
   if (sectionRef.value) {
@@ -157,8 +154,33 @@ onUnmounted(() => {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
-.btn-sharp {
-  border-radius: 0;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+.accent-slash {
+  position: relative;
+}
+.accent-slash::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #C5162E;
+  transform: skewX(-20deg);
+}
+
+/* 
+  Cool aggressive clip-path applied to the ENTIRE CARD, 
+  cutting the top-left and bottom-right corners (in LTR).
+  In RTL: Top-Right and Bottom-Left corners.
+*/
+.clip-aggressive-card {
+  clip-path: polygon(
+    20px 0, 
+    100% 0, 
+    100% calc(100% - 20px), 
+    calc(100% - 20px) 100%, 
+    0 100%, 
+    0 20px
+  );
 }
 </style>

@@ -1,11 +1,16 @@
 <template>
-  <div class="font-sans antialiased text-obsidian bg-bone min-h-screen">
+  <div class="font-sans antialiased text-obsidian bg-bone min-h-screen overflow-x-hidden">
     <AppHeader />
     <main>
       <HeroSection />
-      <AboutSection />
+      <FeaturesSection />
       <ClassesSection />
       <CoachesSection />
+      <StatsSection />
+      <MediaSection />
+      <TestimonialSection />
+      <BlogSection />
+      <PreFooterSection />
     </main>
     <AppFooter />
   </div>
