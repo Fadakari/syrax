@@ -17,5 +17,8 @@ export default defineNuxtConfig({
       ]
     }
   },
-  compatibilityDate: '2026-09-01'
+  compatibilityDate: '2026-09-01',
+  routeRules: {
+    '/api/directus/**': { proxy: 'http://localhost:8055/**' }
+  }
 })

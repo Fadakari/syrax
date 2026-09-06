@@ -16,9 +16,9 @@
     <!-- Image Background Wrapper (Left Side) -->
     <div 
       class="absolute top-0 left-0 w-full h-full lg:w-[60%] z-0 transition-all duration-[1500ms] ease-out transform origin-left"
-      :class="isVisible ? 'opacity-15 lg:opacity-100' : 'opacity-0'"
+      :class="isVisible ? 'opacity-60 lg:opacity-100' : 'opacity-0'"
     >
-      <div class="w-full h-full relative" style="clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);">
+      <div class="w-full h-full relative lg:[clip-path:polygon(0_0,100%_0,75%_100%,0_100%)]">
         <!-- The actual image with a slow zoom effect -->
         <img 
           src="/images/hero-light.jpg" 
@@ -45,7 +45,7 @@
         </div>
 
         <!-- Main Title -->
-        <h1 class="text-4xl md:text-7xl font-black text-[#0B0D10] leading-[1.1] tracking-tighter mb-4 flex flex-col">
+        <h1 class="text-5xl md:text-7xl font-black text-[#0B0D10] leading-[1.1] tracking-tighter mb-4 flex flex-col">
           <span 
             class="block transition-all duration-700 ease-out lg:w-[80%] w-[100%]"
             :class="isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'"

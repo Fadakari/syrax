@@ -1,21 +1,14 @@
 <template>
-  <div class="font-sans antialiased text-obsidian bg-bone min-h-screen overflow-x-hidden">
+  <div class="font-sans antialiased text-obsidian bg-bone min-h-screen flex flex-col overflow-x-hidden">
     <AppHeader />
-    <main>
-      <HeroSection />
-      <FeaturesSection />
-      <ClassesSection />
-      <CoachesSection />
-      <StatsSection />
-      <MediaSection />
-      <TestimonialSection />
-      <BlogSection />
-      <PreFooterSection />
+    <main class="flex-grow">
+      <NuxtPage />
     </main>
     <AppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
-// Nuxt 3 auto-imports components by default. No need to manually import if they are in the components/ directory.
+import AppHeader from '~/components/AppHeader.vue'
+import AppFooter from '~/components/AppFooter.vue'
 </script>
