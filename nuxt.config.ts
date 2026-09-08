@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   ],
   directus: {
     rest: {
-      baseUrl: 'http://localhost:8055', // آدرس بک‌اند دایرکتوس
+      baseUrl: 'http://localhost:8055', // آدرس پایه سرور دایرکتوس
+      nuxtBaseUrl: '/api/directus', // استفاده از پراکسی برای درخواست‌های مرورگر جهت جلوگیری از CORS
     }
   },
   app: {
